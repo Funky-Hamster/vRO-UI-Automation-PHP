@@ -28,6 +28,8 @@ class LoginTest extends DuskTestCase
                     ->type('password', 'Benner817922')
                     ->press('Log in')
                     ->assertPathIs('/vro-ui-automation/public/dashboard');
+            $browser->visit('/dashboard')
+                    ->screenshot('home');
         });
     }
 }
