@@ -5,6 +5,7 @@ namespace Tests\Browser;
 use App\Models\User;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
+use Tests\Browser\Pages\Login;
 use Laravel\Dusk\Chrome;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -23,13 +24,9 @@ class LoginTest extends DuskTestCase
         // ]);
 
         $this->browse(function (Browser $browser) {
-            $browser->visit('/login')
-                    ->type('email', 'Yunnan.Xu@dell.com')
-                    ->type('password', 'Benner817922')
-                    ->press('Log in')
-                    ->assertPathIs('/vro-ui-automation/public/dashboard');
-            $browser->visit('/dashboard')
-                    ->screenshot('home');
+            $browser->visit(new Login)->screenshot("0508-0")
+                    ->vSphereLogin()->screenshot("0508-1")
+                    ->assertSee('vSphere Client');
         });
     }
 }
