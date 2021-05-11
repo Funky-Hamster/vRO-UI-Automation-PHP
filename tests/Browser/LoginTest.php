@@ -25,7 +25,7 @@ class LoginTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) {
             $browser->visit(new Login)->screenshot("0508-0")
-                    ->vSphereLogin()->screenshot("0508-1")
+                    ->vSphereLogin()
                     ->assertSee('vSphere Client');
         });
     }
